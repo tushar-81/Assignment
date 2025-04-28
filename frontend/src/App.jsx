@@ -11,7 +11,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in by looking for token in localStorage
+    
     const token = localStorage.getItem('token');
     const userData = localStorage.getItem('user');
     
