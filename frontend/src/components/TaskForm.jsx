@@ -55,7 +55,7 @@ const TaskForm = ({ onAddTask, onCancel }) => {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md px-4 py-3"
                 placeholder="Task title"
                 required
               />
@@ -73,7 +73,7 @@ const TaskForm = ({ onAddTask, onCancel }) => {
                 rows={5}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md min-h-[120px] "
+                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md min-h-[120px] px-4 py-3"
                 placeholder="Task description"
                 required
               />
@@ -90,7 +90,7 @@ const TaskForm = ({ onAddTask, onCancel }) => {
                 name="priority"
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md px-4 py-3"
               >
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>

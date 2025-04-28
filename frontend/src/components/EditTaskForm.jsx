@@ -45,7 +45,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
               id="edit-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-3"
               required
             />
           </div>
@@ -59,7 +59,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
               rows={3}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-3"
               required
             ></textarea>
           </div>
@@ -72,7 +72,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
               id="edit-priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
