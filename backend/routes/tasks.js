@@ -5,7 +5,6 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-
 const taskValidation = [
   body('title')
     .notEmpty().withMessage('Title is required')
@@ -22,7 +21,6 @@ const taskValidation = [
     .optional()
     .isIn(['Low', 'Medium', 'High']).withMessage('Priority must be Low, Medium, or High')
 ];
-
 
 const updateTaskValidation = [
   param('id').isMongoId().withMessage('Invalid task ID format'),
@@ -47,14 +45,12 @@ const updateTaskValidation = [
     .isIn(['complete', 'incomplete']).withMessage('Status must be complete or incomplete')
 ];
 
-
 const validateTaskId = [
   param('id').isMongoId().withMessage('Invalid task ID format')
 ];
 
 router.post('/', auth, taskValidation, async (req, res) => {
   try {
-    // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -97,7 +93,6 @@ router.get('/', auth, async (req, res) => {
 
 router.get('/:id', auth, validateTaskId, async (req, res) => {
   try {
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -117,7 +112,6 @@ router.get('/:id', auth, validateTaskId, async (req, res) => {
 
 router.patch('/:id', auth, updateTaskValidation, async (req, res) => {
   try {
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -126,19 +120,16 @@ router.patch('/:id', auth, updateTaskValidation, async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['title', 'description', 'status', 'priority'];
     
-    
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
     if (!isValidOperation) {
       return res.status(400).json({ message: 'Invalid updates' });
     }
-    
     
     const task = await Task.findOne({ _id: req.params.id, user: req.user._id });
     
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
     }
-    
     
     updates.forEach(update => task[update] = req.body[update]);
     await task.save();
@@ -151,7 +142,6 @@ router.patch('/:id', auth, updateTaskValidation, async (req, res) => {
 
 router.delete('/:id', auth, validateTaskId, async (req, res) => {
   try {
-   
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });

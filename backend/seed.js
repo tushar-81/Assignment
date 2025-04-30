@@ -3,9 +3,7 @@ const User = require('./models/User');
 const Task = require('./models/Task');
 const dotenv = require('dotenv');
 
-
 dotenv.config();
-
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/task-management')
   .then(() => {
@@ -18,10 +16,8 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/task-manage
 
 const seedData = async () => {
   try {
-    
     await User.deleteMany({});
     await Task.deleteMany({});
-    
     
     const user1 = new User({
       name: 'Test User 1',
@@ -39,7 +35,6 @@ const seedData = async () => {
     await user2.save();
     
     console.log('Test users created');
-    
     
     const tasksUser1 = [
       {
@@ -62,7 +57,6 @@ const seedData = async () => {
         user: user1._id
       }
     ];
-    
     
     const tasksUser2 = [
       {

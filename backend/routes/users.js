@@ -6,7 +6,6 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-
 const registerValidation = [
   body('name')
     .notEmpty().withMessage('Name is required')
@@ -30,7 +29,6 @@ const registerValidation = [
     .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
 ];
 
-
 const loginValidation = [
   body('email')
     .notEmpty().withMessage('Email is required')
@@ -43,7 +41,6 @@ const loginValidation = [
 
 router.post('/register', registerValidation, async (req, res) => {
   try {
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -71,7 +68,6 @@ router.post('/register', registerValidation, async (req, res) => {
 
 router.post('/login', loginValidation, async (req, res) => {
   try {
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -79,7 +75,6 @@ router.post('/login', loginValidation, async (req, res) => {
     
     const { email, password } = req.body;
     
- 
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
@@ -90,7 +85,6 @@ router.post('/login', loginValidation, async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
     
-
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET || 'your_jwt_secret',
